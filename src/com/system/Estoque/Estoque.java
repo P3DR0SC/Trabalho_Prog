@@ -1,17 +1,23 @@
 package com.system.Estoque;
 
-import com.system.Prateleira.Produto;
 import java.util.Vector;
 
 public class Estoque {
-    Vector<Produto> estoque = new Vector<Produto>();
+    static Vector<Caixa> caixas = new Vector<Caixa>();
+    
+   public static void addCaixa(Caixa c) {
+    caixas.add(c);
+   }
 
-    void guardar(){
-
+   public static Caixa removeCaixa(int index) {
+        Caixa res = caixas.get(index);
+        caixas.remove(index);
+        return res;
     }
 
-    void pegar(){
-
+    public static Caixa removeCaixa(Caixa c) {
+        caixas.remove(c);
+        return c;
     }
 
 }

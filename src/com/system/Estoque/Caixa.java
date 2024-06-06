@@ -1,8 +1,17 @@
 package com.system.Estoque;
 
-public class Caixa {
-    //polimorfismo:
-    
-    
+import com.system.Prateleira.Produto;
 
+public class Caixa {
+    private Produto produto;
+        
+    public Caixa(Produto produto){
+        this.produto = produto;
+    }
+
+    public Produto getProduto(){
+        Produto p = this.produto;
+        this.produto = null;
+        return p;
+    }
 }
