@@ -1,3 +1,4 @@
 /bin/
-/nbproject/
+/nbproject/*
 /test/
+build.xml
