@@ -1,3 +1,6 @@
+package com.system.Estoque;
+
+import com.system.Prateleira.Produto;
 import java.util.Vector;
 
 public class Estoque {
