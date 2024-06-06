@@ -1,30 +1,24 @@
 package com.system.Funcionarios;
 
-public class Funcionario implements iPessoa{
-    double salario;
-    String cargo;
-    public final String nome; 
-    public final String cpf; 
+public abstract class Funcionario implements iPessoa {
+    private double salario;
 
-    public Funcionario(String nome, String cpf){
+    public final String nome;
+    public final String cpf;
+
+    public Funcionario(String nome, String cpf, double salario) {
+        this.salario = salario;
         this.nome = nome;
         this.cpf = cpf;
-        System.out.println("Funcionário criado com sucesso!");        
+        System.out.println("Funcionário criado com sucesso!");
     }
 
-void mostrarStatus(){
-    System.out.format("O funcionário %s está %s no momento." , nome, cargo);
+    void mostrarStatus() {
+        System.out.format("O funcionário %s", nome);
 
     }
 
-void empacotar(){
+    void empacotar() {
 
-}
-void passar(){
-
-}
-void fiscalizar(){
-
-}
-
+    }
 }
