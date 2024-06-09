@@ -13,6 +13,7 @@ public abstract class Funcionario implements iPessoa {
         System.out.println("Funcionário criado com sucesso!");
     }
 
+
     void mostrarStatus() {
         System.out.format("O funcionário %s", nome);
 
