@@ -9,6 +9,7 @@ public class Estoquista extends Funcionario{
 
     public Estoquista(String nome, String cpf, double salario) {
         super(nome, cpf, salario);
+        System.out.println("Funcionário criado com sucesso!");
     }
     
     public Caixa empacotar(Produto p){

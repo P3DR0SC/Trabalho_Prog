@@ -10,7 +10,6 @@ public abstract class Funcionario implements iPessoa {
         this.salario = salario;
         this.nome = nome;
         this.cpf = cpf;
-        System.out.println("Funcionário criado com sucesso!");
     }
 
 
