@@ -11,8 +11,10 @@ public class Main {
     
     public static void menuPrincipal(){
         Scanner scanner = new Scanner(System.in);
-        
-            System.out.println("Bem vindo ao sistema de gerenciamento, gerente");
+
+            
+            System.out.println("\nBem vindo ao sistema de gerenciamento, gerente\n");
+            System.out.println("            ------======------          ");
             System.out.println("Selecione a opção desejada:");
             System.out.println("  1 - Cadastrar funcionário");
             System.out.println("  2 - Remover funcionário");
@@ -20,8 +22,10 @@ public class Main {
             System.out.println("  4 - Alterar salário de funcionário");
             System.out.println("  5 - Mover do estoque para a prateleira");
             System.out.println("  6 - Mover da prateleira para o estoque");
+            System.out.println("  7 - Listar funcionários");
 
-            System.out.println("  7 - Sair\n");
+            System.out.println("  0 - Sair");
+            System.out.println("            ------======------          ");
 
             int op = scanner.nextInt();
             scanner.nextLine();
@@ -57,7 +61,7 @@ public class Main {
                         }
 
                         Equipe.addFuncionario(f);
-                        Equipe.listarFuncionarios();
+                    
                     } catch (Exception e) {
                         System.out.println("Erro ao cadastrar funcionário");
                     }
@@ -68,7 +72,12 @@ public class Main {
                     return;
                 
                 case 2:
-                    System.out.println("Insira o nome do funcionário: ");
+                    System.out.println("Insira o cpf do funcionário: ");
+                    cpf = scanner.nextLine();
+                    
+                    Equipe.removeFuncionario(cpf);
+                    menuPrincipal();
+                    return;
                 
                 case 3:
                     System.out.println("Insira o nome do produto: ");
@@ -136,8 +145,15 @@ public class Main {
                     Equipe.modificarSalario(cpf, salario);
                     menuPrincipal();
                     return;
+
+                case 7:
+                    Equipe.listarFuncionarios();
+                    menuPrincipal();
+                    return;
                 }
                 
+                
+
             }
     
     public static void main(String[] args) {
