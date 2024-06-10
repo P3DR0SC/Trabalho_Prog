@@ -8,7 +8,7 @@ import com.system.Estoque.Estoque;
 import com.system.Funcionarios.*;
 import com.system.Prateleira.Produto;
 public class Main {
-    
+    //menu principal, onde são listadas as opções aos usuários.
     public static void menuPrincipal(){
         Scanner scanner = new Scanner(System.in);
 
@@ -30,6 +30,7 @@ public class Main {
             int op = scanner.nextInt();
             scanner.nextLine();
 
+            //Opção 1 cadastra um novo funcionário
             switch (op) {
                 case 1:
                     System.out.println("Insira o nome do funcionário: ");
@@ -40,13 +41,13 @@ public class Main {
 
                     System.out.println("Insira o salário do funcionário: ");
                     double salario = scanner.nextDouble();
-
+                //Cadastra o cargo
                     System.out.println("Selecione o cargo: ");
                     System.out.println("  1 - Estoquista");
                     System.out.println("  2 - Carregador");
 
                     int cargo = scanner.nextInt();
-
+                //avisa o usuário caso o input seja inválido
                     while (cargo < 1 || cargo > 2) {
                         System.out.println("Cargo inválido, tente novamente: ");
                         cargo = scanner.nextInt();
@@ -145,6 +146,13 @@ public class Main {
                     Equipe.modificarSalario(cpf, salario);
                     menuPrincipal();
                     return;
+                
+                case 5:
+                    //mover do estoque para a prateleira.
+                    System.out.println("Digite o produto que será mandado para a prateleira:");
+                    
+                    
+                    
 
                 case 7:
                     Equipe.listarFuncionarios();

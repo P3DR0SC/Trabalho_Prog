@@ -2,6 +2,8 @@ package com.system.Estoque;
 
 import java.util.Vector;
 
+import com.system.Funcionarios.Carregador;
+
 public class Estoque {
     static Vector<Caixa> caixas = new Vector<Caixa>();
     
@@ -20,4 +22,9 @@ public class Estoque {
         return c;
     }
 
+    public static Vector<Caixa> getCaixas() {
+        return caixas;
+    }
+    
+    
 }
