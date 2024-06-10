@@ -21,4 +21,22 @@ public class Prateleira {
         produtos.remove(p);
         return p;
     }
+    
+    public static boolean possuiProdutos(){
+        return !produtos.isEmpty();
+    }
+    
+    public static void listar(){
+        if(!produtos.isEmpty()){
+            for(Produto p:produtos){
+                System.out.println("Produto: " + p.nome);
+                System.out.println("Categoria: " + p.categoria);
+                System.out.println("---------------");
+            }
+        }
+        else{
+            System.out.println("Não há nenhuma caixa cadastrado no momento");
+        }
+    }
+    
 }
