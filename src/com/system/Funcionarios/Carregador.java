@@ -2,6 +2,9 @@
 package com.system.Funcionarios;
 
 import com.system.Estoque.Caixa;
+import com.system.Estoque.Estoque;
+import com.system.Prateleira.Prateleira;
+import com.system.Prateleira.Produto;
 
 public class Carregador extends Funcionario{
 
@@ -9,6 +12,14 @@ public class Carregador extends Funcionario{
         super(nome, cpf, salario);
     }
     
+    public void colocarNaPrateleira(Caixa caixa){
+        Estoque.removeCaixa(caixa);
+        Prateleira.addProduto(caixa.removerDaCaixa());
+        System.out.println("Produto adicionado a prateleira");
+    }
     
-    
+    public void colocarNaPrateleira(Produto produto){
+        Prateleira.addProduto(produto);
+        System.out.println("Produto adicionado a prateleira");
+    }
 }

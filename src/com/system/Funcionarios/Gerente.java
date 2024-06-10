@@ -7,4 +7,11 @@ public class Gerente extends Funcionario{
         super(nome, cpf, salario);
     }
 
+    public void alterarSalarioPorCpf(String cpf, double salario){
+        Equipe.modificarSalario(cpf, salario);
+    }
+    
+    public void alterarCargoPorCpf(String cpf){
+        Equipe.modificarCargo(cpf);
+    }
 }   

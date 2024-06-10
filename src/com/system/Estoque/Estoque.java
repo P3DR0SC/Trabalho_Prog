@@ -2,8 +2,6 @@ package com.system.Estoque;
 
 import java.util.Vector;
 
-import com.system.Funcionarios.Carregador;
-
 public class Estoque {
     static Vector<Caixa> caixas = new Vector<Caixa>();
     
@@ -26,5 +24,30 @@ public class Estoque {
         return caixas;
     }
     
+    public static boolean possuiEstoque(){
+        return !caixas.isEmpty();
+    }
     
+    public static void listar(){
+        if(!caixas.isEmpty()){
+            for(Caixa c:caixas){
+                System.out.println("Produto: " + c.getProduto().nome);
+                System.out.println("---------------");
+            }
+        }
+        else{
+            System.out.println("Não há nenhuma caixa cadastrado no momento");
+        }
+    }
+    
+    public static Caixa pegarCaixa(String produto){
+        if(!caixas.isEmpty()){
+            for(Caixa c:caixas){
+                if(c.getProduto().nome.equals(produto)) return c;
+            }
+        }
+
+        System.out.println("Caixa com produto não encontrada!");
+        return null;
+    }
 }

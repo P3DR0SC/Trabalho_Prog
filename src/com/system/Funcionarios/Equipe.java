@@ -27,27 +27,108 @@ public class Equipe {
         System.out.println("Funcionário não encontrado!");
 
     }
+    
+    public static void modificarCargo(String cpf){
+        
+        for (int i = 0; i < funcionarios.size(); i++)  
+        { 
+            Funcionario prev = funcionarios.get(i);
+            if(prev.cpf.equals(cpf)){
+                Funcionario novo;
+                if(prev instanceof Carregador){
+                    novo = new Estoquista(prev.nome, prev.cpf, prev.getSalario());
+                } else{
+                    novo = new Carregador(prev.nome, prev.cpf, prev.getSalario());
+                }
+                funcionarios.set(i, novo);
+                return;
+            }
+        } 
+
+        System.out.println("Funcionário não encontrado!");
+    }
+    
     public static void modificarSalario(String cpf, double reajuste){
         for(Funcionario f:funcionarios){
             if(f.cpf.equals(cpf)){
+                
+                if(f.getSalario() <= reajuste){
+                    System.out.println("Reajuste não pode ser aplicado");
+                }
+                else
                 f.setSalario(reajuste);
 
                 return;
             }
         }
         System.out.println("Funcionário não encontrado!");
-
     }
+    
     public static void listarFuncionarios(){
-        if(funcionarios.size() > 0){
+        if(!funcionarios.isEmpty()){
             for(Funcionario f:funcionarios){
                 System.out.println("Nome: " + f.nome);
                 System.out.println("Cpf: " + f.cpf);
                 System.out.println("Salário: " + f.getSalario());
+                System.out.println("---------------");
             }
         }
         else{
             System.out.println("Não há nenhum funcionário cadastrado no momento");
         }
+    }
+       
+    public static void selecionarCarregador(){
+        if(!funcionarios.isEmpty()){
+            for(Funcionario f:funcionarios){
+                if(f instanceof Estoquista) continue;
+                System.out.println("Nome: " + f.nome);
+                System.out.println("Cpf: " + f.cpf);
+                System.out.println("Salário: " + f.getSalario());
+                System.out.println("---------------");
+            }
+        }
+        else{
+            System.out.println("Não há nenhum funcionário cadastrado no momento");
+        }
+    }
+    
+        public static void selecionarEstoquista(){
+        if(!funcionarios.isEmpty()){
+            for(Funcionario f:funcionarios){
+                if(f instanceof Carregador) continue;
+                System.out.println("Nome: " + f.nome);
+                System.out.println("Cpf: " + f.cpf);
+                System.out.println("Salário: " + f.getSalario());
+                System.out.println("---------------");
+            }
+        }
+        else{
+            System.out.println("Não há nenhum funcionário cadastrado no momento");
+        }
+    }
+    
+    public static boolean possuiFuncionarios(){
+        return !funcionarios.isEmpty();
+    }
+    
+    public static boolean possuiCarregadores(){
+        if(!funcionarios.isEmpty()){
+            for(Funcionario f:funcionarios){
+                if(f instanceof Carregador) return true;
+            }
+        }
+        return false;
+    }
+    
+    public static Carregador getCarregadorPorCPF(String cpf){
+        for(Funcionario f:funcionarios){
+            if(f.cpf.equals(cpf)){
+                if(f instanceof Carregador)
+                    return (Carregador) f;
+            }
+        }
+        System.out.println("Funcionário não encontrado!");
+        return null;
     }
 }
