@@ -73,6 +73,7 @@ public class Main {
             case 2:
                 if(!Equipe.possuiFuncionarios()){
                     System.out.println("Sem funcionários cadastrados!");
+                    menuPrincipal();
                     break;
                 }
                 
@@ -150,6 +151,7 @@ public class Main {
             case 4:
                 if(!Equipe.possuiFuncionarios()){
                     System.out.println("Sem funcionários cadastrados!");
+                    menuPrincipal();
                     break;
                 }
                 
@@ -190,6 +192,7 @@ public class Main {
             case 5:
                 if(!Estoque.possuiEstoque()){
                     System.out.println("Sem estoque cadastrado!");
+                    menuPrincipal();
                     break;
                 }
                 
@@ -214,6 +217,7 @@ public class Main {
                 
                 if(!Equipe.possuiCarregadores()){
                     System.out.println("Sem carregadores cadastrados!");
+                    menuPrincipal();
                     break;
                 }
                 
