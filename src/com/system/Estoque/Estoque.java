@@ -40,14 +40,16 @@ public class Estoque {
         }
     }
     
-    public static Caixa pegarCaixa(String produto){
-        if(!caixas.isEmpty()){
-            for(Caixa c:caixas){
-                if(c.getProduto().nome.equals(produto)) return c;
+    public static Caixa pegarCaixa(String produto) {
+        if (!caixas.isEmpty()) {
+            for (Caixa c : caixas) {
+                if (c.getProduto() != null && c.getProduto().nome.equalsIgnoreCase(produto)) {
+                    return c;
+                }
             }
         }
-
         System.out.println("Caixa com produto não encontrada!");
         return null;
     }
+    
 }

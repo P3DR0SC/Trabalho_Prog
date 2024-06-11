@@ -11,6 +11,18 @@ public class Prateleira {
         produtos.add(p);
     }
 
+    public static Produto encontrarProduto(String nomeProduto) {
+        if (!produtos.isEmpty()) {
+            for (Produto p : produtos) {
+                if (nomeProduto.equals(p.getNome())) {
+                    return p;
+                }
+            }
+        }
+        return null;
+    }
+    
+
     public static Produto removeProduto(int index) {
         Produto res = produtos.get(index);
         produtos.remove(index);

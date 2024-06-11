@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.system.Estoque.*;
 import com.system.Funcionarios.*;
+import com.system.Prateleira.Prateleira;
 import com.system.Prateleira.Produto;
 
 public class Main {
@@ -77,7 +78,7 @@ public class Main {
                     break;
                 }
                 
-                System.out.println("Deseja listar os funcionários? ");
+                System.out.println("Deseja listar os funcionários antes da ação? ");
                 System.out.println("  1 - Sim");
                 System.out.println("  2 - Não");
                                 
@@ -85,7 +86,7 @@ public class Main {
                      Equipe.listarFuncionarios();
                 }
                 
-                System.out.println("Insira o cpf do funcionário: ");
+                System.out.println("Insira o cpf do funcionário que deseja remover: ");
                 
                 cpf = scanner.nextLine();
 
@@ -113,11 +114,6 @@ public class Main {
                 Produto p;
                 String nomeCategoriaProduto;
 
-                while (categoriaProduto < 1 || categoriaProduto > 4) {
-                    System.out.println("Categoria inválido, tente novamente: ");
-                    categoriaProduto = scanner.nextInt();
-                }
-
                 switch (categoriaProduto) {
                     case 1:
                         nomeCategoriaProduto = "Alimento Fresco";
@@ -136,7 +132,7 @@ public class Main {
                         break;
 
                     default:
-                        nomeCategoriaProduto = "Alimento Fresco";
+                        nomeCategoriaProduto = "";
                         break;
                 }
 
@@ -155,7 +151,7 @@ public class Main {
                     break;
                 }
                 
-                System.out.println("Deseja listar os funcionários? ");
+                System.out.println("Deseja listar os funcionários antes da ação? ");
                 System.out.println("  1 - Sim");
                 System.out.println("  2 - Não");
                 
@@ -196,7 +192,7 @@ public class Main {
                     break;
                 }
                 
-                System.out.println("Deseja listar as caixas? ");
+                System.out.println("Deseja listar as caixas em estoque? ");
                 System.out.println("  1 - Sim");
                 System.out.println("  2 - Não");
                 
@@ -211,6 +207,7 @@ public class Main {
                 Caixa caixa = Estoque.pegarCaixa(produto);
                 
                 if(caixa == null) {
+                    System.out.println("Entrou na condição");
                     menuPrincipal();
                     break;
                 }
@@ -246,7 +243,62 @@ public class Main {
 
             case 6:
 
+            if(!Prateleira.possuiProdutos()){
+                System.out.println("Sem produtos na prateleira!");
+                menuPrincipal();
                 break;
+            }
+
+            System.out.println("Deseja listar os produtos da prateleira? ");
+                System.out.println("  1 - Sim");
+                System.out.println("  2 - Não");
+                
+                if(scanner.nextInt() ==   1) {
+                     Prateleira.listar();
+                }
+
+            System.out.println("Digite o produto que será mandado para o estoque: ");
+                
+            String nomeProdutoPrateleiraEstoque = scanner.nextLine();
+
+            if(Prateleira.encontrarProduto(nomeProdutoPrateleiraEstoque) == null){
+                System.out.println("Não existe esse produto na prateleira");
+                menuPrincipal();
+                break;
+            }
+
+            if(!Equipe.possuiEstoquistas()){
+                System.out.println("Sem estoquistas cadastrados!");
+                menuPrincipal();
+                break;
+            }
+
+            System.out.println("Deseja listar os estoquistas? ");
+                System.out.println("  1 - Sim");
+                System.out.println("  2 - Não");
+                
+                if(scanner.nextInt() ==   1) {
+                     Equipe.selecionarEstoquista();
+                }
+                
+                System.out.println("Insira o cpf do Estoquista: ");
+                cpf = scanner.nextLine();
+                
+                Estoquista estoquista = Equipe.getEstoquistaPorCPF(cpf);
+                
+                if(estoquista == null) {
+                    menuPrincipal();
+                    break;
+                }
+
+            Produto produto2 = Prateleira.encontrarProduto(nomeProdutoPrateleiraEstoque);
+            Caixa caixa2 = estoquista.empacotar(produto2);
+
+            estoquista.colocarNoEstoque(caixa2);
+                
+            menuPrincipal();
+            break;
+
                 
             case 7:
                 Equipe.listarFuncionarios();

@@ -41,6 +41,7 @@ public class Equipe {
                     novo = new Carregador(prev.nome, prev.cpf, prev.getSalario());
                 }
                 funcionarios.set(i, novo);
+                System.out.println("Cargo alterado com sucesso!");
                 return;
             }
         } 
@@ -120,12 +121,32 @@ public class Equipe {
         }
         return false;
     }
+
+    public static boolean possuiEstoquistas(){
+        if(!funcionarios.isEmpty()){
+            for(Funcionario f:funcionarios){
+                if(f instanceof Estoquista) return true;
+            }
+        }
+        return false;
+    }
     
     public static Carregador getCarregadorPorCPF(String cpf){
         for(Funcionario f:funcionarios){
             if(f.cpf.equals(cpf)){
                 if(f instanceof Carregador)
                     return (Carregador) f;
+            }
+        }
+        System.out.println("Funcionário não encontrado!");
+        return null;
+    }
+
+    public static Estoquista getEstoquistaPorCPF(String cpf){
+        for(Funcionario f:funcionarios){
+            if(f.cpf.equals(cpf)){
+                if(f instanceof Estoquista)
+                    return (Estoquista) f;
             }
         }
         System.out.println("Funcionário não encontrado!");

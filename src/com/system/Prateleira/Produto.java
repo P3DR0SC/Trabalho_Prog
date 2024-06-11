@@ -11,4 +11,8 @@ public class Produto {
         System.out.println("Produto criado com sucesso!");
     }
 
+    public String getNome() {
+        return nome;
+    }
+
 }
